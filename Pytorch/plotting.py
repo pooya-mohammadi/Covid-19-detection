@@ -6,7 +6,7 @@ def plot(history):
     plt.plot(history['val_accuracy'])
     plt.title('model accuracy')
     plt.ylabel('accuracy')
-    plt.xlabel('query', )
+    plt.xlabel('epochs')
     plt.legend(['train', 'val'], loc='upper left')
     plt.show()
 
@@ -14,6 +14,6 @@ def plot(history):
     plt.plot(history['val_loss'])
     plt.title('model loss')
     plt.ylabel('loss')
-    plt.xlabel('query')
+    plt.xlabel('epochs')
     plt.legend(['train', 'val'], loc='upper left')
     plt.show()
