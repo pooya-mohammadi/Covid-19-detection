@@ -60,7 +60,7 @@ def train():
         history = model.fit(
             train_ds,
             validation_data=val_ds,
-            epochs=hps['epochs'],
+            epochs=hps['n_epochs'],
             batch_size=hps['batch_size'],
             callbacks=callbacks,
             verbose=2
@@ -73,7 +73,7 @@ def train():
         model_evaluation(model, test_generator)
     elif hps['framework'] == 'keras':
         train_generator, validation_generator, test_generator = Dataset.keras_preprocess(
-            dataset_dir=hps['dataset_dir'] + "train/",
+            dataset_dir=hps['dataset_dir'],
             img_size=hps['img_size'],
             batch_size=hps['batch_size'],
             augment=True, split_size=0.3)
@@ -82,7 +82,7 @@ def train():
             steps_per_epoch=train_generator.samples // hps['batch_size'],
             validation_data=validation_generator,
             validation_steps=validation_generator.samples // hps['batch_size'],
-            epochs=hps['epochs'],
+            epochs=hps['n_epochs'],
             callbacks=callbacks,
             verbose=2)
         plot(history)
